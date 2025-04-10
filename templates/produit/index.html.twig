@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Produits{% endblock %}
+
+{% block body %}
+<div class="container py-4">
+    <h1 class="mb-4 text-primary">🗂️ Liste des Produits</h1>
+
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <form method="get" class="row g-2" id="search-form">
+                
+                <div class="col-md-3">
+                    <input type="number" name="min" id="min-input" class="form-control" placeholder="Prix min" step="0.01">
+                </div>
+                <div class="col-md-3">
+                    <input type="number" name="max" id="max-input" class="form-control" placeholder="Prix max" step="0.01">
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-primary w-100">OK</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4 text-end">
+            <a href="{{ path('app_produit_new') }}" class="btn btn-success">➕ Ajouter un produit</a>
+        </div>
+    </div>
+
+    <div id="produit-list">
+        {% include 'produit/_liste.html.twig' with { produits: produits } %}
+    </div>
+</div>
+
+
+{% endblock %}

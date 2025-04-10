@@ -1,0 +1,15 @@
+{{ form_start(form, {'attr': {'enctype': 'multipart/form-data', 'novalidate': 'novalidate'}}) }}
+
+    {% for field in [form.nom, form.description, form.prix, form.imageFile, form.fournisseur] %}
+        <div class="mb-3">
+            {{ form_label(field) }}
+            {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(field) }}
+        </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-success mt-3">
+        {{ button_label|default('💾 Enregistrer') }}
+    </button>
+
+{{ form_end(form) }}

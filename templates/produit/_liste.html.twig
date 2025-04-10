@@ -1,0 +1,39 @@
+{% if produits is not empty %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        {% for produit in produits %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    {% if produit.imageUrl %}
+                        <img src="{{ asset('uploads/produits/' ~ produit.imageUrl) }}"
+                             class="card-img-top"
+                             style="height: 200px; object-fit: cover;"
+                             alt="Image de {{ produit.nom }}">
+                    {% else %}
+                        <div class="bg-light d-flex align-items-center justify-content-center"
+                             style="height: 200px;">
+                            <span class="text-muted">Aucune image</span>
+                        </div>
+                    {% endif %}
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ produit.nom }}</h5>
+                        <p class="card-text text-muted small">
+                            {{ produit.description|length > 100 ? produit.description|slice(0, 100) ~ '...' : produit.description }}
+                        </p>
+                        <p class="fw-bold text-dark mb-1">💶 {{ produit.prix }} DT</p>
+                        <p class="mb-2"><span class="text-muted">Fournisseur :</span> {{ produit.fournisseur.nomEntreprise }}</p>
+
+                        <div class="mt-auto d-flex justify-content-between">
+                            <a href="{{ path('app_produit_show', {'id': produit.id}) }}" class="btn btn-sm btn-outline-primary">👁️ Voir</a>
+                            <a href="{{ path('app_produit_edit', {'id': produit.id}) }}" class="btn btn-sm btn-outline-warning">✏️ Modifier</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-info text-center mt-5">
+        Aucun produit trouvé.
+    </div>
+{% endif %}
