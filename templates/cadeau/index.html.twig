@@ -1,0 +1,55 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Liste des Cadeaux{% endblock %}
+
+{% block body %}
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Liste des Cadeaux</h3>
+                <a href="{{ path('app_cadeau_new') }}" class="btn btn-outline-light">
+                    <i class="bi bi-plus-circle"></i> Nouveau Cadeau
+                </a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle text-center">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Identifiant</th>
+                            <th>Nom</th>
+                            <th>Type</th>
+                            <th>Quantité</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for cadeau in cadeaus %}
+                            <tr>
+                                <td>{{ cadeau.idCadeaux }}</td>
+                                <td>{{ cadeau.nomCadeaux }}</td>
+                                <td>{{ cadeau.typeCadeaux }}</td>
+                                <td>{{ cadeau.quantiteDisponible }}</td>
+                                <td>{{ cadeau.description }}</td>
+                                <td>
+                                    <a href="{{ path('app_cadeau_show', {'idCadeaux': cadeau.idCadeaux}) }}" class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="{{ path('app_cadeau_edit', {'idCadeaux': cadeau.idCadeaux}) }}" class="btn btn-sm btn-outline-success">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6" class="text-muted">Aucun enregistrement trouvé</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

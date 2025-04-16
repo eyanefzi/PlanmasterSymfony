@@ -1,0 +1,50 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Détails du Cadeau{% endblock %}
+
+{% block body %}
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="card shadow-sm border-0 mb-5">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">Détails du Cadeau</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th>Identifiant</th>
+                        <td>{{ cadeau.idCadeaux }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ cadeau.nomCadeaux }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>{{ cadeau.typeCadeaux }}</td>
+                    </tr>
+                    <tr>
+                        <th>Quantité disponible</th>
+                        <td>{{ cadeau.quantiteDisponible }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ cadeau.description }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{{ path('app_cadeau_index') }}" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left"></i> Retour à la liste
+                    </a>
+                    <div>
+                        <a href="{{ path('app_cadeau_edit', {'idCadeaux': cadeau.idCadeaux}) }}" class="btn btn-primary">
+                            <i class="bi bi-pencil"></i> Modifier
+                        </a>
+                        {{ include('cadeau/_delete_form.html.twig', { 'button_class': 'btn btn-danger ms-2' }) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

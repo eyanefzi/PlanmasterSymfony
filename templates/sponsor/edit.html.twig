@@ -1,0 +1,19 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Modifier le Sponsor{% endblock %}
+
+{% block body %}
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Modifier le Sponsor</h3>
+                <a href="{{ path('app_sponsor_index') }}" class="btn btn-outline-light">
+                    <i class="bi bi-arrow-left"></i> Retour à la liste
+                </a>
+            </div>
+            <div class="card-body">
+                {{ include('sponsor/_form.html.twig', { form: form, button_label: 'Mettre à jour' }) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
