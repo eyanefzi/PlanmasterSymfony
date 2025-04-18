@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Produits{% endblock %}
+
+{% block body %}
+<div class="container py-4">
+    <h1 class="mb-4 text-primary">🗂️ Liste des Produits</h1>
+
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <form method="get" class="row g-2" id="search-form">
+                <div class="col-md-3">
+                    <input type="number" name="min" id="min-input" class="form-control" placeholder="Prix min" step="0.01">
+                </div>
+                <div class="col-md-3">
+                    <input type="number" name="max" id="max-input" class="form-control" placeholder="Prix max" step="0.01">
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-primary w-100">OK</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4 text-end">
+            <a href="{{ path('app_produit_new') }}" class="btn btn-success">➕ Ajouter un produit</a>
+        </div>
+    </div>
+
+    <div id="produit-list">
+        {% for produit in produits %}
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <h4>{{ produit.nom }}</h4>
+                    <p>{{ produit.description }}</p>
+                    <p>{{ produit.prix }} €</p>
+                    <button class="btn btn-outline-primary" onclick="addToCart({{ produit.id }}, {{ produit.prix }})">Ajouter au panier</button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="mt-3">
+        <button class="btn btn-info" onclick="viewCart()">🛒 Voir le panier</button>
+    </div>
+</div>
+
+<!-- Cart Display (Hidden Initially) -->
+<div id="cart-display" style="display:none; position:fixed; top:0; right:0; background-color: white; width: 300px; height: 100%; box-shadow: -2px 0px 5px rgba(0,0,0,0.5); padding: 10px;">
+    <h3>Votre Panier</h3>
+    <ul id="cart-items-list">
+        <!-- Cart items will be dynamically added here -->
+    </ul>
+    <button class="btn btn-success" onclick="confirmPurchase()">Confirmer la commande</button>
+    <button class="btn btn-secondary" onclick="closeCart()">Fermer</button>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+// Function to add products to the cart
+function addToCart(productId, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve existing cart or create a new one
+    let product = cart.find(item => item.productId === productId);
+
+    if (product) {
+        product.quantity += 1; // Increase quantity if product already in cart
+    } else {
+        cart.push({
+            productId: productId,
+            price: price,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart)); // Save the updated cart
+    alert('Produit ajouté au panier');
+}
+
+// Function to display the cart
+function viewCart() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartHtml = '<ul>';
+    cart.forEach(item => {
+        cartHtml += `<li>Produit ID: ${item.productId}, Prix: ${item.price}€, Quantité: ${item.quantity}</li>`;
+    });
+    cartHtml += '</ul>';
+    document.getElementById('cart-items-list').innerHTML = cartHtml; // Update the cart display
+    document.getElementById('cart-display').style.display = 'block'; // Show the cart
+}
+
+// Function to confirm the purchase (redirect to order confirmation page)
+function confirmPurchase() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+        alert('Votre panier est vide!');
+        return;
+    }
+
+    // You can send the cart data to the backend here, for example via an API request
+    alert('Commande confirmée');
+    // Redirect to the order page or perform any necessary action
+    // window.location.href = '/order-confirmation'; 
+}
+
+// Function to close the cart
+function closeCart() {
+    document.getElementById('cart-display').style.display = 'none';
+}
+</script>
+{% endblock %}
