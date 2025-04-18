@@ -21,6 +21,10 @@ return [
         '/commande/new' => [[['_route' => 'app_commande_new', '_controller' => 'App\\Controller\\CommandeController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/produit' => [[['_route' => 'app_produit_index', '_controller' => 'App\\Controller\\ProduitController::index'], null, ['GET' => 0], null, false, false, null]],
         '/produit/new' => [[['_route' => 'app_produit_new', '_controller' => 'App\\Controller\\ProduitController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/store/products' => [[['_route' => 'app_store_products', '_controller' => 'App\\Controller\\StoreController::index'], null, ['GET' => 0], null, false, false, null]],
+        '/store/add-to-cart' => [[['_route' => 'app_store_add_to_cart', '_controller' => 'App\\Controller\\StoreController::addToCart'], null, ['POST' => 0], null, false, false, null]],
+        '/store/new-commande' => [[['_route' => 'app_store_new_commande', '_controller' => 'App\\Controller\\StoreController::newCommande'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/store/confirm-order' => [[['_route' => 'app_store_confirm_order', '_controller' => 'App\\Controller\\StoreController::confirmOrder'], null, ['POST' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

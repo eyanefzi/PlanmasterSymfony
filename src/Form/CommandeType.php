@@ -19,12 +19,16 @@ class CommandeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('date', DateType::class, [
-                'widget' => 'single_text',
-                'label' => 'Date de commande',
-                'required' => false, // Désactiver validation HTML5
-                'empty_data' => null,
-            ])
+        ->add('date', DateType::class, [
+            'widget' => 'single_text',
+            'label' => 'Date de commande',
+            'required' => false,
+            'empty_data' => null,
+            'attr' => [
+                'min' => (new \DateTime())->format('Y-m-d'),
+            ],
+        ])
+        
             ->add('status', TextType::class, [
                 'label' => 'Statut',
                 'required' => false,

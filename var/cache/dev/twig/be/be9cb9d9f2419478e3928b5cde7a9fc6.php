@@ -176,6 +176,6 @@ class __TwigTemplate_c13afcb0e22bcf94ac1caef180fae229 extends Template
         <button class=\"btn btn-danger\">🗑️ Delete</button>
     </form>
 {% endblock %}
-", "client/edit.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\templates\\client\\edit.html.twig");
+", "client/edit.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\templates\\client\\edit.html.twig");
     }
 }

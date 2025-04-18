@@ -142,6 +142,6 @@ class __TwigTemplate_8b061258d111e1f036bc1402337a7dc4 extends Template
     </tbody>
 </table>
 </div>
-", "@WebProfiler/Profiler/table.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\table.html.twig");
+", "@WebProfiler/Profiler/table.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\table.html.twig");
     }
 }

@@ -99,6 +99,6 @@ class __TwigTemplate_c74ba65754e4fd9dc70c1792c96f4b29 extends Template
     {{ form_widget(form) }}
     <button class=\"btn\">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
-", "client/_form.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\templates\\client\\_form.html.twig");
+", "client/_form.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\templates\\client\\_form.html.twig");
     }
 }

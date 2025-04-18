@@ -249,6 +249,6 @@ class __TwigTemplate_c195f6d21ea6d47855b7e0030832b6b1 extends Template
 
     <a href=\"{{ path('app_client_new') }}\" class=\"btn btn-primary\">➕ Create new</a>
 {% endblock %}
-", "client/index.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\templates\\client\\index.html.twig");
+", "client/index.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\templates\\client\\index.html.twig");
     }
 }

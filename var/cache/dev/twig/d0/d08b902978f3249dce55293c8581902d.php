@@ -51,176 +51,216 @@ class __TwigTemplate_b606ae3d0038c7d3553c82a457420d6a extends Template
         // line 1
         yield "<!DOCTYPE html>
 <html lang=\"fr\">
+
 <head>
-    <meta charset=\"UTF-8\">
+    <meta charset=\"UTF-8\" />
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />
+    <meta name=\"description\" content=\"\" />
+    <meta name=\"author\" content=\"\" />
     <title>";
-        // line 5
+        // line 9
         yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
         yield "</title>
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
 
-    <!-- Favicon minimal -->
-    <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><text y='1.2em' font-size='96'>⚫️</text><text y='1.3em' x='0.2em' font-size='76' fill='%23fff'>sf</text></svg>\">
+    <!-- Favicon -->
+    <link href=\"";
+        // line 12
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/favicon.ico"), "html", null, true);
+        yield "\" rel=\"icon\">
 
-    <!-- ✅ Bootstrap -->
-    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
+    <!-- Google Web Fonts -->
+    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
+    <link href=\"https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap\" rel=\"stylesheet\">
 
-    <!-- ✅ Custom CSS -->
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
+    <!-- Icon Font Stylesheet -->
+    <!-- You can add more icon stylesheets here if needed -->
 
-        main {
-            padding-top: 20px;
-            padding-bottom: 40px;
-        }
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href=\"";
+        // line 22
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/css/bootstrap.min.css"), "html", null, true);
+        yield "\" rel=\"stylesheet\" />
 
-        .navbar-brand {
-            font-weight: bold;
-        }
-
-        footer {
-            padding: 20px 0;
-            background-color: #212529;
-            color: #ced4da;
-        }
-
-        .flash-message {
-            margin-bottom: 20px;
-        }
-
-        /* ✅ Pagination */
-        .pagination {
-            margin: 0;
-        }
-
-        .pagination .page-item {
-            margin: 0 2px;
-        }
-
-        .pagination .page-link {
-            padding: 0.4rem 0.75rem;
-            font-size: 0.875rem;
-            color: #0d6efd;
-            border-radius: 0.5rem;
-            border: 1px solid #dee2e6;
-            transition: background-color 0.2s ease-in-out;
-        }
-
-        .pagination .page-item.active .page-link {
-            background-color: #0d6efd;
-            border-color: #0d6efd;
-            color: white;
-            font-weight: bold;
-        }
-
-        .pagination .page-item.disabled .page-link {
-            color: #6c757d;
-            background-color: #f8f9fa;
-        }
-
-        /* ✅ Small card for pagination container */
-        .pagination-container {
-            max-width: 200px;
-            margin: auto;
-        }
-
-        .pagination-card {
-            border-radius: 1rem;
-        }
-    </style>
+    <!-- Template Stylesheet -->
+    <link href=\"";
+        // line 25
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/css/styles.css"), "html", null, true);
+        yield "\" rel=\"stylesheet\" />
 
     ";
-        // line 80
+        // line 27
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
-        // line 81
+        // line 31
         yield "</head>
+
 <body>
 
-    <!-- ✅ Flash Messages -->
-    ";
-        // line 85
-        $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 85, $this->source); })()), "flashes", [], "any", false, false, false, 85));
-        foreach ($context['_seq'] as $context["label"] => $context["messages"]) {
-            // line 86
-            yield "        ";
-            $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable($context["messages"]);
-            foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                // line 87
-                yield "            <div class=\"alert alert-";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["label"], "html", null, true);
-                yield " alert-dismissible fade show m-3 flash-message\" role=\"alert\">
-                ";
-                // line 88
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["message"], "html", null, true);
-                yield "
-                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Fermer\"></button>
-            </div>
-        ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_key'], $context['message'], $context['_parent']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 92
-            yield "    ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['label'], $context['messages'], $context['_parent']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 93
-        yield "
-    <!-- ✅ Navigation -->
-    <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark sticky-top\">
-        <div class=\"container\">
-            <a class=\"navbar-brand\" href=\"/\">🛠 Planmaster</a>
-            <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarsExample\" aria-controls=\"navbarsExample\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
-                <span class=\"navbar-toggler-icon\"></span>
-            </button>
-
-            <div class=\"collapse navbar-collapse\" id=\"navbarsExample\">
-                <ul class=\"navbar-nav ms-auto\">
-                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"/\">Accueil</a></li>
-                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"/commande\">Commandes</a></li>
-                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"/produit\">Produits</a></li>
-                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"/client\">Clients</a></li>
+    <!-- Navigation-->
+    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
+        <div class=\"container px-4 px-lg-5\">
+            <a class=\"navbar-brand\" href=\"#\">Planmaster</a>
+            <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"><span class=\"navbar-toggler-icon\"></span></button>
+            <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
+                <ul class=\"navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4\">
+                    <li class=\"nav-item\"><a class=\"nav-link active\" aria-current=\"page\" href=\"#!\">Accueil</a></li>
+                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"#!\">À propos</a></li>
+                    <li class=\"nav-item dropdown\">
+                        <a class=\"nav-link dropdown-toggle\" id=\"navbarDropdown\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Magasin</a>
+                        <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
+                            <li><a class=\"dropdown-item\" href=\"#!\">Tous les produits</a></li>
+                            <li><hr class=\"dropdown-divider\" /></li>
+                            <li><a class=\"dropdown-item\" href=\"#!\">Produits populaires</a></li>
+                            <li><a class=\"dropdown-item\" href=\"#!\">Nouveautés</a></li>
+                        </ul>
+                    </li>
                 </ul>
+
+                <!-- Cart Icon and Dropdown -->
+                <div id=\"cart-icon\" class=\"position-relative\">
+                    <button class=\"btn btn-outline-dark\" onclick=\"toggleCartDropdown()\">
+                        <i class=\"fas fa-shopping-cart\"></i> Panier 
+                        <span id=\"cart-count\" class=\"badge bg-danger\">0</span>
+                    </button>
+                    <div id=\"cart-dropdown\" class=\"dropdown-menu p-3\" style=\"display: none; width: 300px;\">
+                        <div id=\"cart-items-list\">
+                            <p class=\"text-muted\">Votre panier est vide.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- ✅ Main Content -->
+    <!-- Header-->
+    <header class=\"bg-dark py-5\">
+        <div class=\"container px-4 px-lg-5 my-5\">
+            <div class=\"text-center text-white\">
+                <h6 class=\"display-4 fw-bolder\">Achetez ce que vous voulez sur Planmaster !</h6>
+                <p class=\"lead fw-normal text-white-50 mb-0\"></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
     <main class=\"container\">
         ";
-        // line 115
+        // line 83
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 116
+        // line 84
         yield "    </main>
 
-    <!-- ✅ Footer -->
-    <footer class=\"text-center\">
+    <!-- Footer-->
+    <footer class=\"py-5 bg-dark\">
         <div class=\"container\">
-            <p class=\"mb-1\">&copy; ";
-        // line 121
+            <p class=\"m-0 text-center text-white\">Copyright &copy; Planmaster ";
+        // line 89
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y"), "html", null, true);
-        yield " Symfony App</p>
-            <p class=\"small\">
-                Built with ❤️ using Symfony & Bootstrap |
-                <a href=\"https://symfony.com/\" class=\"text-decoration-none text-light\">Symfony Docs</a>
-            </p>
+        yield "</p>
         </div>
     </footer>
 
-    <!-- ✅ Bootstrap JS -->
-    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\"></script>
+    <!-- Bootstrap JS-->
+    <script src=\"";
+        // line 94
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/bootstrap.bundle.min.js"), "html", null, true);
+        yield "\"></script>
+
+    <!-- Custom JS -->
+    <script src=\"";
+        // line 97
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/scripts.js"), "html", null, true);
+        yield "\"></script>
 
     ";
-        // line 132
+        // line 99
         yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
-        // line 133
-        yield "</body>
+        // line 102
+        yield "
+    <script>
+        // Function to update the cart count dynamically
+        function updateCartInfo(cartCount) {
+            document.getElementById('cart-count').innerText = cartCount; // Update the cart count dynamically
+        }
+
+        // Call this function on page load to initialize the cart count
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartCount = cart.length; // Get the total number of products in the cart
+            updateCartInfo(cartCount);  // Update the cart icon with the correct count
+        }
+
+        // Trigger this function on cart interactions (e.g., adding products to the cart)
+        updateCartInfo();  // This will update the cart count when the page loads
+
+        // Function to toggle cart dropdown visibility
+        function toggleCartDropdown() {
+            let dropdown = document.getElementById('cart-dropdown');
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+            displayCartItems();
+        }
+
+        // Function to display cart items inside the dropdown
+        function displayCartItems() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let html = '<ul class=\"list-group list-group-flush\">';
+            let total = 0;
+
+            if (cart.length === 0) {
+                html += '<li class=\"list-group-item text-center\">Votre panier est vide</li>';
+            } else {
+                cart.forEach(item => {
+                    let subtotal = item.price * item.quantity;
+                    total += subtotal;
+                    html += `
+                        <li class=\"list-group-item d-flex justify-content-between align-items-start\">
+                            <div class=\"me-2\">
+                                <strong>\${item.name}</strong><br>
+                                <small>\${item.quantity} × DT \${item.price.toFixed(2)} = <strong>DT \${subtotal.toFixed(2)}</strong></small>
+                            </div>
+                            <button class=\"btn btn-sm btn-outline-danger\" onclick=\"removeFromCart(\${item.productId})\">
+                                &times;
+                            </button>
+                        </li>`;
+                });
+            }
+
+            html += '</ul>';
+            document.getElementById('cart-items-list').innerHTML = html;
+            document.getElementById('cart-total').innerText = 'Total : DT ' + total.toFixed(2);
+        }
+
+        // Function to add product to cart
+        function addToCart(productId, price, name) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let product = cart.find(item => item.productId === productId);
+
+            if (product) {
+                product.quantity += 1;
+            } else {
+                cart.push({ productId, name, price, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            displayCartItems();
+        }
+
+        // Function to remove product from cart
+        function removeFromCart(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.productId !== productId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            displayCartItems();
+        }
+
+        // Update the cart count when page loads
+        document.addEventListener(\"DOMContentLoaded\", function () {
+            updateCartCount();
+        });
+    </script>
+</body>
+
 </html>
 ";
         
@@ -232,7 +272,7 @@ class __TwigTemplate_b606ae3d0038c7d3553c82a457420d6a extends Template
         yield from [];
     }
 
-    // line 5
+    // line 9
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -245,7 +285,7 @@ class __TwigTemplate_b606ae3d0038c7d3553c82a457420d6a extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "Mon Application Symfony";
+        yield "Planmaster";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -255,7 +295,7 @@ class __TwigTemplate_b606ae3d0038c7d3553c82a457420d6a extends Template
         yield from [];
     }
 
-    // line 80
+    // line 27
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -268,6 +308,13 @@ class __TwigTemplate_b606ae3d0038c7d3553c82a457420d6a extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
+        // line 28
+        yield "    <!-- Additional custom stylesheets can be added here -->
+    <link href=\"";
+        // line 29
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/css/custom.css"), "html", null, true);
+        yield "\" rel=\"stylesheet\" />
+    ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -277,7 +324,7 @@ class __TwigTemplate_b606ae3d0038c7d3553c82a457420d6a extends Template
         yield from [];
     }
 
-    // line 115
+    // line 83
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -299,7 +346,7 @@ class __TwigTemplate_b606ae3d0038c7d3553c82a457420d6a extends Template
         yield from [];
     }
 
-    // line 132
+    // line 99
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -312,6 +359,9 @@ class __TwigTemplate_b606ae3d0038c7d3553c82a457420d6a extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
+        // line 100
+        yield "    <!-- Additional custom JavaScript files can be added here -->
+    ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -342,145 +392,199 @@ class __TwigTemplate_b606ae3d0038c7d3553c82a457420d6a extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  303 => 132,  281 => 115,  259 => 80,  236 => 5,  223 => 133,  221 => 132,  207 => 121,  200 => 116,  198 => 115,  174 => 93,  168 => 92,  158 => 88,  153 => 87,  148 => 86,  144 => 85,  138 => 81,  136 => 80,  58 => 5,  52 => 1,);
+        return array (  363 => 100,  350 => 99,  328 => 83,  315 => 29,  312 => 28,  299 => 27,  276 => 9,  178 => 102,  176 => 99,  171 => 97,  165 => 94,  157 => 89,  150 => 84,  148 => 83,  94 => 31,  92 => 27,  87 => 25,  81 => 22,  68 => 12,  62 => 9,  52 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("<!DOCTYPE html>
 <html lang=\"fr\">
+
 <head>
-    <meta charset=\"UTF-8\">
-    <title>{% block title %}Mon Application Symfony{% endblock %}</title>
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+    <meta charset=\"UTF-8\" />
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />
+    <meta name=\"description\" content=\"\" />
+    <meta name=\"author\" content=\"\" />
+    <title>{% block title %}Planmaster{% endblock %}</title>
 
-    <!-- Favicon minimal -->
-    <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><text y='1.2em' font-size='96'>⚫️</text><text y='1.3em' x='0.2em' font-size='76' fill='%23fff'>sf</text></svg>\">
+    <!-- Favicon -->
+    <link href=\"{{ asset('assets/img/favicon.ico') }}\" rel=\"icon\">
 
-    <!-- ✅ Bootstrap -->
-    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
+    <!-- Google Web Fonts -->
+    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
+    <link href=\"https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap\" rel=\"stylesheet\">
 
-    <!-- ✅ Custom CSS -->
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
+    <!-- Icon Font Stylesheet -->
+    <!-- You can add more icon stylesheets here if needed -->
 
-        main {
-            padding-top: 20px;
-            padding-bottom: 40px;
-        }
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href=\"{{ asset('assets/css/bootstrap.min.css') }}\" rel=\"stylesheet\" />
 
-        .navbar-brand {
-            font-weight: bold;
-        }
+    <!-- Template Stylesheet -->
+    <link href=\"{{ asset('assets/css/styles.css') }}\" rel=\"stylesheet\" />
 
-        footer {
-            padding: 20px 0;
-            background-color: #212529;
-            color: #ced4da;
-        }
-
-        .flash-message {
-            margin-bottom: 20px;
-        }
-
-        /* ✅ Pagination */
-        .pagination {
-            margin: 0;
-        }
-
-        .pagination .page-item {
-            margin: 0 2px;
-        }
-
-        .pagination .page-link {
-            padding: 0.4rem 0.75rem;
-            font-size: 0.875rem;
-            color: #0d6efd;
-            border-radius: 0.5rem;
-            border: 1px solid #dee2e6;
-            transition: background-color 0.2s ease-in-out;
-        }
-
-        .pagination .page-item.active .page-link {
-            background-color: #0d6efd;
-            border-color: #0d6efd;
-            color: white;
-            font-weight: bold;
-        }
-
-        .pagination .page-item.disabled .page-link {
-            color: #6c757d;
-            background-color: #f8f9fa;
-        }
-
-        /* ✅ Small card for pagination container */
-        .pagination-container {
-            max-width: 200px;
-            margin: auto;
-        }
-
-        .pagination-card {
-            border-radius: 1rem;
-        }
-    </style>
-
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}
+    <!-- Additional custom stylesheets can be added here -->
+    <link href=\"{{ asset('assets/css/custom.css') }}\" rel=\"stylesheet\" />
+    {% endblock %}
 </head>
+
 <body>
 
-    <!-- ✅ Flash Messages -->
-    {% for label, messages in app.flashes %}
-        {% for message in messages %}
-            <div class=\"alert alert-{{ label }} alert-dismissible fade show m-3 flash-message\" role=\"alert\">
-                {{ message }}
-                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Fermer\"></button>
-            </div>
-        {% endfor %}
-    {% endfor %}
-
-    <!-- ✅ Navigation -->
-    <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark sticky-top\">
-        <div class=\"container\">
-            <a class=\"navbar-brand\" href=\"/\">🛠 Planmaster</a>
-            <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarsExample\" aria-controls=\"navbarsExample\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
-                <span class=\"navbar-toggler-icon\"></span>
-            </button>
-
-            <div class=\"collapse navbar-collapse\" id=\"navbarsExample\">
-                <ul class=\"navbar-nav ms-auto\">
-                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"/\">Accueil</a></li>
-                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"/commande\">Commandes</a></li>
-                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"/produit\">Produits</a></li>
-                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"/client\">Clients</a></li>
+    <!-- Navigation-->
+    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
+        <div class=\"container px-4 px-lg-5\">
+            <a class=\"navbar-brand\" href=\"#\">Planmaster</a>
+            <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"><span class=\"navbar-toggler-icon\"></span></button>
+            <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
+                <ul class=\"navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4\">
+                    <li class=\"nav-item\"><a class=\"nav-link active\" aria-current=\"page\" href=\"#!\">Accueil</a></li>
+                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"#!\">À propos</a></li>
+                    <li class=\"nav-item dropdown\">
+                        <a class=\"nav-link dropdown-toggle\" id=\"navbarDropdown\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">Magasin</a>
+                        <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
+                            <li><a class=\"dropdown-item\" href=\"#!\">Tous les produits</a></li>
+                            <li><hr class=\"dropdown-divider\" /></li>
+                            <li><a class=\"dropdown-item\" href=\"#!\">Produits populaires</a></li>
+                            <li><a class=\"dropdown-item\" href=\"#!\">Nouveautés</a></li>
+                        </ul>
+                    </li>
                 </ul>
+
+                <!-- Cart Icon and Dropdown -->
+                <div id=\"cart-icon\" class=\"position-relative\">
+                    <button class=\"btn btn-outline-dark\" onclick=\"toggleCartDropdown()\">
+                        <i class=\"fas fa-shopping-cart\"></i> Panier 
+                        <span id=\"cart-count\" class=\"badge bg-danger\">0</span>
+                    </button>
+                    <div id=\"cart-dropdown\" class=\"dropdown-menu p-3\" style=\"display: none; width: 300px;\">
+                        <div id=\"cart-items-list\">
+                            <p class=\"text-muted\">Votre panier est vide.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- ✅ Main Content -->
+    <!-- Header-->
+    <header class=\"bg-dark py-5\">
+        <div class=\"container px-4 px-lg-5 my-5\">
+            <div class=\"text-center text-white\">
+                <h6 class=\"display-4 fw-bolder\">Achetez ce que vous voulez sur Planmaster !</h6>
+                <p class=\"lead fw-normal text-white-50 mb-0\"></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
     <main class=\"container\">
         {% block body %}{% endblock %}
     </main>
 
-    <!-- ✅ Footer -->
-    <footer class=\"text-center\">
+    <!-- Footer-->
+    <footer class=\"py-5 bg-dark\">
         <div class=\"container\">
-            <p class=\"mb-1\">&copy; {{ \"now\"|date(\"Y\") }} Symfony App</p>
-            <p class=\"small\">
-                Built with ❤️ using Symfony & Bootstrap |
-                <a href=\"https://symfony.com/\" class=\"text-decoration-none text-light\">Symfony Docs</a>
-            </p>
+            <p class=\"m-0 text-center text-white\">Copyright &copy; Planmaster {{ \"now\"|date(\"Y\") }}</p>
         </div>
     </footer>
 
-    <!-- ✅ Bootstrap JS -->
-    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\"></script>
+    <!-- Bootstrap JS-->
+    <script src=\"{{ asset('assets/js/bootstrap.bundle.min.js') }}\"></script>
 
-    {% block javascripts %}{% endblock %}
+    <!-- Custom JS -->
+    <script src=\"{{ asset('assets/js/scripts.js') }}\"></script>
+
+    {% block javascripts %}
+    <!-- Additional custom JavaScript files can be added here -->
+    {% endblock %}
+
+    <script>
+        // Function to update the cart count dynamically
+        function updateCartInfo(cartCount) {
+            document.getElementById('cart-count').innerText = cartCount; // Update the cart count dynamically
+        }
+
+        // Call this function on page load to initialize the cart count
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartCount = cart.length; // Get the total number of products in the cart
+            updateCartInfo(cartCount);  // Update the cart icon with the correct count
+        }
+
+        // Trigger this function on cart interactions (e.g., adding products to the cart)
+        updateCartInfo();  // This will update the cart count when the page loads
+
+        // Function to toggle cart dropdown visibility
+        function toggleCartDropdown() {
+            let dropdown = document.getElementById('cart-dropdown');
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+            displayCartItems();
+        }
+
+        // Function to display cart items inside the dropdown
+        function displayCartItems() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let html = '<ul class=\"list-group list-group-flush\">';
+            let total = 0;
+
+            if (cart.length === 0) {
+                html += '<li class=\"list-group-item text-center\">Votre panier est vide</li>';
+            } else {
+                cart.forEach(item => {
+                    let subtotal = item.price * item.quantity;
+                    total += subtotal;
+                    html += `
+                        <li class=\"list-group-item d-flex justify-content-between align-items-start\">
+                            <div class=\"me-2\">
+                                <strong>\${item.name}</strong><br>
+                                <small>\${item.quantity} × DT \${item.price.toFixed(2)} = <strong>DT \${subtotal.toFixed(2)}</strong></small>
+                            </div>
+                            <button class=\"btn btn-sm btn-outline-danger\" onclick=\"removeFromCart(\${item.productId})\">
+                                &times;
+                            </button>
+                        </li>`;
+                });
+            }
+
+            html += '</ul>';
+            document.getElementById('cart-items-list').innerHTML = html;
+            document.getElementById('cart-total').innerText = 'Total : DT ' + total.toFixed(2);
+        }
+
+        // Function to add product to cart
+        function addToCart(productId, price, name) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let product = cart.find(item => item.productId === productId);
+
+            if (product) {
+                product.quantity += 1;
+            } else {
+                cart.push({ productId, name, price, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            displayCartItems();
+        }
+
+        // Function to remove product from cart
+        function removeFromCart(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.productId !== productId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            displayCartItems();
+        }
+
+        // Update the cart count when page loads
+        document.addEventListener(\"DOMContentLoaded\", function () {
+            updateCartCount();
+        });
+    </script>
 </body>
+
 </html>
-", "base.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\templates\\base.html.twig");
+", "base.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\templates\\base.html.twig");
     }
 }

@@ -137,6 +137,6 @@ class __TwigTemplate_7f49b400c8dc1fe097289f540762fdc3 extends Template
     </button>
 
 {{ form_end(form) }}
-", "produit/_form.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\templates\\produit\\_form.html.twig");
+", "produit/_form.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\templates\\produit\\_form.html.twig");
     }
 }

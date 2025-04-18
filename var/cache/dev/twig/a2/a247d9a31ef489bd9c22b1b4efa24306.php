@@ -192,6 +192,6 @@ class __TwigTemplate_6a145a868298ded0f695c698419c0933 extends Template
     </div>
 </div>
 {% endblock %}
-", "produit/edit.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\templates\\produit\\edit.html.twig");
+", "produit/edit.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\templates\\produit\\edit.html.twig");
     }
 }

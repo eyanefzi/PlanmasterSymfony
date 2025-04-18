@@ -46,13 +46,14 @@ class __TwigTemplate_aa3bc2149df4e33f212562519dd0619b extends Template
 
         // line 1
         yield "<form method=\"post\" action=\"";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_client_delete", ["idClient" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["client"]) || array_key_exists("client", $context) ? $context["client"] : (function () { throw new RuntimeError('Variable "client" does not exist.', 1, $this->source); })()), "idClient", [], "any", false, false, false, 1)]), "html", null, true);
-        yield "\" onsubmit=\"return confirm('Are you sure you want to delete this item?');\">
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_client_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["client"]) || array_key_exists("client", $context) ? $context["client"] : (function () { throw new RuntimeError('Variable "client" does not exist.', 1, $this->source); })()), "id", [], "any", false, false, false, 1)]), "html", null, true);
+        yield "\" 
+      onsubmit=\"return confirm('Are you sure you want to delete this item?');\">
     <input type=\"hidden\" name=\"_token\" value=\"";
-        // line 2
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["client"]) || array_key_exists("client", $context) ? $context["client"] : (function () { throw new RuntimeError('Variable "client" does not exist.', 2, $this->source); })()), "idClient", [], "any", false, false, false, 2))), "html", null, true);
+        // line 3
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["client"]) || array_key_exists("client", $context) ? $context["client"] : (function () { throw new RuntimeError('Variable "client" does not exist.', 3, $this->source); })()), "id", [], "any", false, false, false, 3))), "html", null, true);
         yield "\">
-    <button class=\"btn\">Delete</button>
+    <button class=\"btn btn-danger\">🗑️ Delete</button>
 </form>
 ";
         
@@ -85,15 +86,16 @@ class __TwigTemplate_aa3bc2149df4e33f212562519dd0619b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  53 => 2,  48 => 1,);
+        return array (  54 => 3,  48 => 1,);
     }
 
     public function getSourceContext(): Source
     {
-        return new Source("<form method=\"post\" action=\"{{ path('app_client_delete', {'idClient': client.idClient}) }}\" onsubmit=\"return confirm('Are you sure you want to delete this item?');\">
-    <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ client.idClient) }}\">
-    <button class=\"btn\">Delete</button>
+        return new Source("<form method=\"post\" action=\"{{ path('app_client_delete', {'id': client.id}) }}\" 
+      onsubmit=\"return confirm('Are you sure you want to delete this item?');\">
+    <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ client.id) }}\">
+    <button class=\"btn btn-danger\">🗑️ Delete</button>
 </form>
-", "client/_delete_form.html.twig", "C:\\Users\\DELL\\Desktop\\eyasymfony\\gestioncommande\\templates\\client\\_delete_form.html.twig");
+", "client/_delete_form.html.twig", "F:\\planmaster team\\eyasymfonyFinal\\gestioncommande\\templates\\client\\_delete_form.html.twig");
     }
 }

@@ -155,6 +155,6 @@ class __TwigTemplate_e5e247923fe641b6a430c9136b1451a1 extends Template
 
     <a href=\"{{ path('app_client_index') }}\">back to list</a>
 {% endblock %}
-", "client/new.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\templates\\client\\new.html.twig");
+", "client/new.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\templates\\client\\new.html.twig");
     }
 }

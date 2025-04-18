@@ -166,7 +166,6 @@ class __TwigTemplate_eb84259d920d26bf11d8773fd3ce0e89 extends Template
         <a href=\"{{ path('app_commande_index') }}\" class=\"btn btn-secondary\">← Retour à la liste</a>
     </div>
 </div>
-{% endblock %}
-", "commande/new.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\templates\\commande\\new.html.twig");
+{% endblock %}", "commande/new.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\templates\\commande\\new.html.twig");
     }
 }

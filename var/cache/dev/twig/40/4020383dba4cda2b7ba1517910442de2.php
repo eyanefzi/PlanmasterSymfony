@@ -38,7 +38,7 @@ class __TwigTemplate_dada07a549462d04e089b1381fea65d3 extends Template
     protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
     {
         // line 1
-        return "base.html.twig";
+        return "base2.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = []): iterable
@@ -50,7 +50,7 @@ class __TwigTemplate_dada07a549462d04e089b1381fea65d3 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "produit/index.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "produit/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("base2.html.twig", "produit/index.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -168,7 +168,7 @@ class __TwigTemplate_dada07a549462d04e089b1381fea65d3 extends Template
 
     public function getSourceContext(): Source
     {
-        return new Source("{% extends 'base.html.twig' %}
+        return new Source("{% extends 'base2.html.twig' %}
 
 {% block title %}Liste des Produits{% endblock %}
 
@@ -203,6 +203,6 @@ class __TwigTemplate_dada07a549462d04e089b1381fea65d3 extends Template
 
 
 {% endblock %}
-", "produit/index.html.twig", "C:\\Users\\DELL\\Desktop\\eyasymfonyFinal\\gestioncommande\\templates\\produit\\index.html.twig");
+", "produit/index.html.twig", "F:\\planmaster team\\eyasymfonyFinal\\gestioncommande\\templates\\produit\\index.html.twig");
     }
 }

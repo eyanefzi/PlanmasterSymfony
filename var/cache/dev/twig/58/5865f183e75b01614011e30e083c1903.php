@@ -202,6 +202,6 @@ class __TwigTemplate_6b6f9207528a60a92062d8bf25337255 extends Template
         Aucun produit trouvé.
     </div>
 {% endif %}
-", "produit/_liste.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\templates\\produit\\_liste.html.twig");
+", "produit/_liste.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\templates\\produit\\_liste.html.twig");
     }
 }

@@ -96,6 +96,6 @@ class __TwigTemplate_3078b4f7f3817645ceb65f8c4779399b extends Template
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ id) }}\">
     <button class=\"btn btn-danger\">🗑️ Supprimer</button>
 </form>
-", "commande/_delete_form.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\templates\\commande\\_delete_form.html.twig");
+", "commande/_delete_form.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\templates\\commande\\_delete_form.html.twig");
     }
 }

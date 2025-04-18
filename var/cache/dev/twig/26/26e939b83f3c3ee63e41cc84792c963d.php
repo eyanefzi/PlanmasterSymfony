@@ -73,7 +73,7 @@ class __TwigTemplate_e5493ab7061005476b103fab1d0cb6c4 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "Détails du Produit";
+        yield "Commande";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -97,83 +97,76 @@ class __TwigTemplate_e5493ab7061005476b103fab1d0cb6c4 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "<div class=\"container py-5\">
-    <h1 class=\"mb-4 text-primary\">🛍️ Détails du Produit</h1>
+        yield "    <h1>Détails de la Commande</h1>
 
-    <section class=\"card shadow rounded-3 p-4 mb-4\">
-        <div class=\"row g-4 align-items-center\">
-            <div class=\"col-md-4 text-center\">
-                <img src=\"";
-        // line 12
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/produits/" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["produit"]) || array_key_exists("produit", $context) ? $context["produit"] : (function () { throw new RuntimeError('Variable "produit" does not exist.', 12, $this->source); })()), "imageUrl", [], "any", false, false, false, 12))), "html", null, true);
-        yield "\"
-                     alt=\"Image du produit\"
-                     class=\"img-fluid rounded border\"
-                     style=\"max-height: 250px; object-fit: contain;\">
-            </div>
-            <div class=\"col-md-8\">
-                <table class=\"table table-hover align-middle\">
-                    <tbody>
-                       
-                        <tr>
-                            <th scope=\"row\">Nom</th>
-                            <td>";
-        // line 23
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["produit"]) || array_key_exists("produit", $context) ? $context["produit"] : (function () { throw new RuntimeError('Variable "produit" does not exist.', 23, $this->source); })()), "nom", [], "any", false, false, false, 23), "html", null, true);
+    <table class=\"table\">
+        <tbody>
+           
+            <tr>
+                <th>Date</th>
+                <td>";
+        // line 13
+        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new RuntimeError('Variable "commande" does not exist.', 13, $this->source); })()), "date", [], "any", false, false, false, 13)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new RuntimeError('Variable "commande" does not exist.', 13, $this->source); })()), "date", [], "any", false, false, false, 13), "Y-m-d"), "html", null, true)) : (""));
         yield "</td>
-                        </tr>
-                        <tr>
-                            <th scope=\"row\">Description</th>
-                            <td>";
-        // line 27
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["produit"]) || array_key_exists("produit", $context) ? $context["produit"] : (function () { throw new RuntimeError('Variable "produit" does not exist.', 27, $this->source); })()), "description", [], "any", false, false, false, 27), "html", null, true);
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>";
+        // line 17
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new RuntimeError('Variable "commande" does not exist.', 17, $this->source); })()), "status", [], "any", false, false, false, 17), "html", null, true);
         yield "</td>
-                        </tr>
-                        <tr>
-                            <th scope=\"row\">Prix</th>
-                            <td><strong>";
-        // line 31
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["produit"]) || array_key_exists("produit", $context) ? $context["produit"] : (function () { throw new RuntimeError('Variable "produit" does not exist.', 31, $this->source); })()), "prix", [], "any", false, false, false, 31), "html", null, true);
-        yield " DT</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+            </tr>
+            <tr>
+                <th>Montant Total</th>
+                <td>";
+        // line 21
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new RuntimeError('Variable "commande" does not exist.', 21, $this->source); })()), "montantTotal", [], "any", false, false, false, 21), "html", null, true);
+        yield "</td>
+            </tr>
+            <tr>
+                <th>Quantité</th>
+                <td>";
+        // line 25
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new RuntimeError('Variable "commande" does not exist.', 25, $this->source); })()), "quantite", [], "any", false, false, false, 25), "html", null, true);
+        yield "</td>
+            </tr>
+            <tr>
+                <th>Payée</th>
+                <td>";
+        // line 29
+        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new RuntimeError('Variable "commande" does not exist.', 29, $this->source); })()), "isPaid", [], "any", false, false, false, 29)) ? ("✅ Oui") : ("❌ Non"));
+        yield "</td>
+            </tr>
+            <tr>
+                <th>Client</th>
+                <td>";
+        // line 33
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new RuntimeError('Variable "commande" does not exist.', 33, $this->source); })()), "client", [], "any", false, false, false, 33), "nom", [], "any", false, false, false, 33) . " ") . CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new RuntimeError('Variable "commande" does not exist.', 33, $this->source); })()), "client", [], "any", false, false, false, 33), "prenom", [], "any", false, false, false, 33)), "html", null, true);
+        yield "</td>
+            </tr>
+        </tbody>
+    </table>
 
-    <div class=\"d-flex justify-content-between align-items-center\">
-        <a href=\"";
-        // line 40
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_produit_index");
-        yield "\" class=\"btn btn-outline-secondary\">
-            ← Retour à la liste
-        </a>
+    <a href=\"";
+        // line 38
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_commande_index");
+        yield "\">← Retour à la liste</a> |
+    <a href=\"";
+        // line 39
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_commande_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new RuntimeError('Variable "commande" does not exist.', 39, $this->source); })()), "id", [], "any", false, false, false, 39)]), "html", null, true);
+        yield "\">✏️ Modifier</a>
 
-        <div class=\"d-flex gap-2\">
-            <a href=\"";
-        // line 45
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_produit_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["produit"]) || array_key_exists("produit", $context) ? $context["produit"] : (function () { throw new RuntimeError('Variable "produit" does not exist.', 45, $this->source); })()), "id", [], "any", false, false, false, 45)]), "html", null, true);
-        yield "\" class=\"btn btn-warning\">
-                ✏️ Modifier
-            </a>
-
-            <form method=\"post\"
-                  action=\"";
-        // line 50
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_produit_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["produit"]) || array_key_exists("produit", $context) ? $context["produit"] : (function () { throw new RuntimeError('Variable "produit" does not exist.', 50, $this->source); })()), "id", [], "any", false, false, false, 50)]), "html", null, true);
+    <form method=\"post\" action=\"";
+        // line 41
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_commande_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new RuntimeError('Variable "commande" does not exist.', 41, $this->source); })()), "id", [], "any", false, false, false, 41)]), "html", null, true);
         yield "\"
-                  onsubmit=\"return confirm('Voulez-vous vraiment supprimer ce produit ?');\"
-                  class=\"d-inline\">
-                <input type=\"hidden\" name=\"_token\" value=\"";
-        // line 53
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["produit"]) || array_key_exists("produit", $context) ? $context["produit"] : (function () { throw new RuntimeError('Variable "produit" does not exist.', 53, $this->source); })()), "id", [], "any", false, false, false, 53))), "html", null, true);
+          onsubmit=\"return confirm('Êtes-vous sûr de vouloir supprimer cette commande ?');\">
+        <input type=\"hidden\" name=\"_token\" value=\"";
+        // line 43
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["commande"]) || array_key_exists("commande", $context) ? $context["commande"] : (function () { throw new RuntimeError('Variable "commande" does not exist.', 43, $this->source); })()), "id", [], "any", false, false, false, 43))), "html", null, true);
         yield "\">
-                <button class=\"btn btn-danger\">🗑️ Supprimer</button>
-            </form>
-        </div>
-    </div>
-</div>
+        <button class=\"btn btn-danger\">🗑️ Supprimer</button>
+    </form>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -205,70 +198,57 @@ class __TwigTemplate_e5493ab7061005476b103fab1d0cb6c4 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  170 => 53,  164 => 50,  156 => 45,  148 => 40,  136 => 31,  129 => 27,  122 => 23,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  166 => 43,  161 => 41,  156 => 39,  152 => 38,  144 => 33,  137 => 29,  130 => 25,  123 => 21,  116 => 17,  109 => 13,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}Détails du Produit{% endblock %}
+{% block title %}Commande{% endblock %}
 
 {% block body %}
-<div class=\"container py-5\">
-    <h1 class=\"mb-4 text-primary\">🛍️ Détails du Produit</h1>
+    <h1>Détails de la Commande</h1>
 
-    <section class=\"card shadow rounded-3 p-4 mb-4\">
-        <div class=\"row g-4 align-items-center\">
-            <div class=\"col-md-4 text-center\">
-                <img src=\"{{ asset('uploads/produits/' ~ produit.imageUrl) }}\"
-                     alt=\"Image du produit\"
-                     class=\"img-fluid rounded border\"
-                     style=\"max-height: 250px; object-fit: contain;\">
-            </div>
-            <div class=\"col-md-8\">
-                <table class=\"table table-hover align-middle\">
-                    <tbody>
-                       
-                        <tr>
-                            <th scope=\"row\">Nom</th>
-                            <td>{{ produit.nom }}</td>
-                        </tr>
-                        <tr>
-                            <th scope=\"row\">Description</th>
-                            <td>{{ produit.description }}</td>
-                        </tr>
-                        <tr>
-                            <th scope=\"row\">Prix</th>
-                            <td><strong>{{ produit.prix }} DT</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+    <table class=\"table\">
+        <tbody>
+           
+            <tr>
+                <th>Date</th>
+                <td>{{ commande.date ? commande.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ commande.status }}</td>
+            </tr>
+            <tr>
+                <th>Montant Total</th>
+                <td>{{ commande.montantTotal }}</td>
+            </tr>
+            <tr>
+                <th>Quantité</th>
+                <td>{{ commande.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Payée</th>
+                <td>{{ commande.isPaid ? '✅ Oui' : '❌ Non' }}</td>
+            </tr>
+            <tr>
+                <th>Client</th>
+                <td>{{ commande.client.nom ~ ' ' ~ commande.client.prenom }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-    <div class=\"d-flex justify-content-between align-items-center\">
-        <a href=\"{{ path('app_produit_index') }}\" class=\"btn btn-outline-secondary\">
-            ← Retour à la liste
-        </a>
+    <a href=\"{{ path('app_commande_index') }}\">← Retour à la liste</a> |
+    <a href=\"{{ path('app_commande_edit', {'id': commande.id}) }}\">✏️ Modifier</a>
 
-        <div class=\"d-flex gap-2\">
-            <a href=\"{{ path('app_produit_edit', {'id': produit.id}) }}\" class=\"btn btn-warning\">
-                ✏️ Modifier
-            </a>
-
-            <form method=\"post\"
-                  action=\"{{ path('app_produit_delete', {'id': produit.id}) }}\"
-                  onsubmit=\"return confirm('Voulez-vous vraiment supprimer ce produit ?');\"
-                  class=\"d-inline\">
-                <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ produit.id) }}\">
-                <button class=\"btn btn-danger\">🗑️ Supprimer</button>
-            </form>
-        </div>
-    </div>
-</div>
+    <form method=\"post\" action=\"{{ path('app_commande_delete', {'id': commande.id}) }}\"
+          onsubmit=\"return confirm('Êtes-vous sûr de vouloir supprimer cette commande ?');\">
+        <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ commande.id) }}\">
+        <button class=\"btn btn-danger\">🗑️ Supprimer</button>
+    </form>
 {% endblock %}
-", "produit/show.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\templates\\produit\\show.html.twig");
+", "produit/show.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\templates\\produit\\show.html.twig");
     }
 }

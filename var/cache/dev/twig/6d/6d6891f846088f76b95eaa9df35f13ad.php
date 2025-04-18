@@ -238,6 +238,6 @@ class __TwigTemplate_29bad7b0038c762c9b6d376ebed5d655 extends Template
 </form>
 
 {% endblock %}
-", "client/show.html.twig", "C:\\Users\\eyane\\Desktop\\projet symfoni\\eyasymfonyFinal\\gestioncommande\\templates\\client\\show.html.twig");
+", "client/show.html.twig", "C:\\Users\\eyane\\Desktop\\symfoni crud 2\\gestioncommande\\templates\\client\\show.html.twig");
     }
 }
