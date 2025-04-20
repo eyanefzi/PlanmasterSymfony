@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un Produit{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">➕ Ajouter un nouveau produit</h1>
+    <div class="card shadow-sm p-4">
+        <!-- Start the form -->
+        {{ form_start(form, {'attr': {'enctype': 'multipart/form-data', 'novalidate': 'novalidate'}}) }}
+        
+        {% for field in [form.nom, form.description, form.prix, form.imageFile, form.fournisseur] %}
+            <div class="mb-3">
+                {{ form_label(field, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(field) }}
+            </div>
+        {% endfor %}
+        
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-lg mt-3">
+                {{ button_label|default('💾 Enregistrer') }}
+            </button>
+        </div>
+
+        {{ form_end(form) }}
+
+        <!-- Link to go back to the product list -->
+        <div class="mt-3 text-center">
+            <a href="{{ path('app_produit_index') }}" class="btn btn-link">← Retour à la liste des produits</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

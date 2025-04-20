@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Planmaster{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon minimal -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><text y='1.2em' font-size='96'>⚫️</text><text y='1.3em' x='0.2em' font-size='76' fill='%23fff'>sf</text></svg>">
+
+    <!-- ✅ Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- ✅ Custom CSS -->
+    <style>
+       html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* This makes the main content take up the available space */
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+footer {
+    margin-top: auto; /* This ensures the footer is pushed to the bottom */
+    padding: 20px 0;
+    background-color: #212529;
+    color: #ced4da;
+}
+
+
+        .flash-message {
+            margin-bottom: 20px;
+        }
+
+        /* ✅ Pagination */
+        .pagination {
+            margin: 0;
+        }
+
+        .pagination .page-item {
+            margin: 0 2px;
+        }
+
+        .pagination .page-link {
+            padding: 0.4rem 0.75rem;
+            font-size: 0.875rem;
+            color: #0d6efd;
+            border-radius: 0.5rem;
+            border: 1px solid #dee2e6;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+            font-weight: bold;
+        }
+
+        .pagination .page-item.disabled .page-link {
+            color: #6c757d;
+            background-color: #f8f9fa;
+        }
+
+        /* ✅ Small card for pagination container */
+        .pagination-container {
+            max-width: 200px;
+            margin: auto;
+        }
+
+        .pagination-card {
+            border-radius: 1rem;
+        }
+    </style>
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+    <!-- ✅ Flash Messages -->
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }} alert-dismissible fade show m-3 flash-message" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <!-- ✅ Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">🛠 Planmaster</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/commande">Commandes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/produit">Produits</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/client">Clients</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ✅ Main Content -->
+    <main class="container">
+        {% block body %}{% endblock %}
+    </main>
+
+    <!-- ✅ Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-1">&copy; {{ "now"|date("Y") }} Planmaster</p>
+            <p class="small">
+                Developed by Planmaster team 
+            </p>
+        </div>
+    </footer>
+
+    <!-- ✅ Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

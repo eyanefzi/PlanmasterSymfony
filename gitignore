@@ -1,0 +1,9 @@
+### Symfony ###
+/var/
+/vendor/
+
+/node_modules/
+
+
+
+

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client{% endblock %}
+
+{% block body %}
+    <h1>Client</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ client.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ client.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ client.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Adresse de Livraison</th>
+                <td>{{ client.adresseLivraison }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>{{ client.telephone }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_client_index') }}">← Back to list</a> |
+    <a href="{{ path('app_client_edit', {'id': client.id}) }}">✏️ Edit</a>
+
+    <form method="post" action="{{ path('app_client_delete', {'id': client.id}) }}"
+      onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.id) }}">
+    <button class="btn btn-danger">Delete</button>
+</form>
+
+{% endblock %}

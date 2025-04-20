@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2>Orders for Client ID: {{ app.request.attributes.get('clientId') }}</h2>
+
+{% if orders is empty %}
+    <p>No orders found for this client.</p>
+{% else %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order Date</th>
+                <th>Status</th>
+                <th>Total Amount</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.date|date('d/m/Y') }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>{{ order.montantTotal }} €</td>
+                    <td>{{ order.quantite }}</td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Client{% endblock %}
+
+{% block body %}
+    <h1>Edit Client</h1>
+
+    {{ include('client/_form.html.twig', {
+        'button_label': 'Update'
+    }) }}
+
+    <a href="{{ path('app_client_index') }}" class="btn btn-secondary mt-3">← Back to list</a>
+
+    <form method="post" action="{{ path('app_client_delete', {'id': client.id}) }}"
+          onsubmit="return confirm('Are you sure you want to delete this item?');" class="mt-2">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.id) }}">
+        <button class="btn btn-danger">🗑️ Delete</button>
+    </form>
+{% endblock %}
