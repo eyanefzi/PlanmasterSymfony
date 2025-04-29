@@ -1,0 +1,62 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Statistiques Sponsors{% endblock %}
+
+{% block body %}
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">Statistiques - Répartition des Cadeaux par Sponsor</h3>
+            </div>
+            <div class="card-body">
+                <canvas id="sponsorPieChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const dataFromSymfony = {{ data|json_encode()|raw }};
+
+        // Préparer les labels et les datas
+        const sponsors = {};
+        dataFromSymfony.forEach(item => {
+            if (sponsors[item.nom]) {
+                sponsors[item.nom]++;
+            } else {
+                sponsors[item.nom] = 1;
+            }
+        });
+
+        const labels = Object.keys(sponsors);
+        const values = Object.values(sponsors);
+
+        const ctx = document.getElementById('sponsorPieChart').getContext('2d');
+        const sponsorPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Nombre de Cadeaux',
+                    data: values,
+                    backgroundColor: [
+                        '#FF6384', '#36A2EB', '#FFCE56', '#cc65fe', '#ff9f40', '#4bc0c0'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Cadeaux par Sponsor'
+                    }
+                }
+            }
+        });
+    </script>
+{% endblock %}

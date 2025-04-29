@@ -12,6 +12,28 @@
                 </a>
             </div>
             <div class="card-body">
+                <form method="get" class="row g-3 mb-4">
+                    <div class="col-md-3">
+                        <input type="text" name="nom" value="{{ app.request.query.get('nom') }}" class="form-control"
+                               placeholder="Nom du Cadeau">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="type" value="{{ app.request.query.get('type') }}" class="form-control"
+                               placeholder="Type du Cadeau">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="number" name="quantite_min" value="{{ app.request.query.get('quantite_min') }}"
+                               class="form-control" placeholder="Quantité Min">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="number" name="quantite_max" value="{{ app.request.query.get('quantite_max') }}"
+                               class="form-control" placeholder="Quantité Max">
+                    </div>
+                    <div class="col-md-2 d-grid">
+                        <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Filtrer</button>
+                    </div>
+                </form>
+
                 <div class="table-responsive">
                     <table class="table table-bordered align-middle text-center">
                         <thead class="table-light">
@@ -33,10 +55,12 @@
                                 <td>{{ cadeau.quantiteDisponible }}</td>
                                 <td>{{ cadeau.description }}</td>
                                 <td>
-                                    <a href="{{ path('app_cadeau_show', {'idCadeaux': cadeau.idCadeaux}) }}" class="btn btn-sm btn-outline-primary me-1">
+                                    <a href="{{ path('app_cadeau_show', {'idCadeaux': cadeau.idCadeaux}) }}"
+                                       class="btn btn-sm btn-outline-primary me-1">
                                         <i class="bi bi-eye"></i>
                                     </a>
-                                    <a href="{{ path('app_cadeau_edit', {'idCadeaux': cadeau.idCadeaux}) }}" class="btn btn-sm btn-outline-success">
+                                    <a href="{{ path('app_cadeau_edit', {'idCadeaux': cadeau.idCadeaux}) }}"
+                                       class="btn btn-sm btn-outline-success">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                 </td>
@@ -52,4 +76,5 @@
             </div>
         </div>
     </div>
+
 {% endblock %}

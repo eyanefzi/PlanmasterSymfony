@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wheel of Fortune{% endblock %}
+
+{% block body %}
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="fw-bolder mb-4">🎡 Wheel of Fortune</h2>
+
+            <!-- Wheel container with arrow -->
+            <div style="position: relative; width: 500px; margin: 0 auto;">
+                <!-- Canvas for Wheel -->
+                <canvas id="wheelCanvas" width="500" height="500"></canvas>
+
+                <!-- Arrow indicator -->
+                <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%);">
+                    <div style="width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-bottom: 20px solid red;"></div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <button id="spinButton" class="btn btn-primary">Spin the Wheel!</button>
+            </div>
+        </div>
+    </section>
+
+    {# Toast container #}
+    <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
+    <script>
+        const cadeaux = {{ cadeaus|json_encode()|raw }};
+        const canvas = document.getElementById('wheelCanvas');
+        const ctx = canvas.getContext('2d');
+        const spinButton = document.getElementById('spinButton');
+        const colors = ['#FFB6C1', '#87CEFA', '#90EE90', '#FFA07A', '#DDA0DD', '#FFD700', '#7FFFD4', '#FF69B4'];
+        const total = cadeaux.length;
+        const arcSize = 2 * Math.PI / total;
+        let startAngle = 0;
+        let isSpinning = false;
+        let spinAngle = 0;
+
+        function drawWheel() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas first
+            for (let i = 0; i < total; i++) {
+                const angle = startAngle + i * arcSize;
+                ctx.beginPath();
+                ctx.fillStyle = colors[i % colors.length];
+                ctx.moveTo(250, 250);
+                ctx.arc(250, 250, 250, angle, angle + arcSize);
+                ctx.lineTo(250, 250);
+                ctx.fill();
+
+                // Text
+                ctx.save();
+                ctx.translate(250, 250);
+                ctx.rotate(angle + arcSize / 2);
+                ctx.textAlign = "right";
+                ctx.fillStyle = "#000";
+                ctx.font = "bold 16px Arial";
+                ctx.fillText(cadeaux[i].nomCadeaux, 230, 10);
+                ctx.restore();
+            }
+        }
+
+        function rotateWheel() {
+            if (!isSpinning) return;
+
+            startAngle += spinAngle;
+            drawWheel();
+            requestAnimationFrame(rotateWheel);
+        }
+
+        spinButton.addEventListener('click', () => {
+            if (isSpinning) return;
+            isSpinning = true;
+            spinAngle = (Math.random() * 0.1) + 0.05;
+
+            function slowDown() {
+                spinAngle *= 0.97;
+                if (spinAngle < 0.002) {
+                    isSpinning = false;
+                    declareWinner();
+                    return;
+                }
+                startAngle += spinAngle;
+                drawWheel();
+                requestAnimationFrame(slowDown);
+            }
+
+            rotateWheel();
+            setTimeout(slowDown, 1000);
+        });
+
+        function declareWinner() {
+            const degrees = startAngle * 180 / Math.PI + 90;
+            const arcd = arcSize * 180 / Math.PI;
+            const index = Math.floor((360 - (degrees % 360)) / arcd) % total;
+            const winner = cadeaux[index];
+
+            setTimeout(() => {
+                showToast("🎉 Félicitations ! Vous avez gagné : <strong>" + winner.nomCadeaux + "</strong>");
+            }, 500);
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.innerHTML = message;
+            toast.style.background = "#28a745";
+            toast.style.color = "#fff";
+            toast.style.padding = "15px 20px";
+            toast.style.borderRadius = "8px";
+            toast.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
+            toast.style.marginTop = "10px";
+            toast.style.fontSize = "16px";
+            toast.style.animation = "fadeInOut 4s forwards";
+
+            document.getElementById('toast-container').appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 4000);
+        }
+
+        drawWheel();
+    </script>
+
+    <style>
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(-20px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
+    </style>
+{% endblock %}

@@ -14,16 +14,66 @@ use Symfony\Component\Routing\Attribute\Route;
 final class CadeauController extends AbstractController
 {
     #[Route(name: 'app_cadeau_index', methods: ['GET'])]
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $cadeaus = $entityManager
-            ->getRepository(Cadeau::class)
-            ->findAll();
+        $nom = $request->query->get('nom');
+        $type = $request->query->get('type');
+        $quantiteMin = $request->query->get('quantite_min');
+        $quantiteMax = $request->query->get('quantite_max');
+
+        $qb = $entityManager->getRepository(Cadeau::class)->createQueryBuilder('c');
+
+        if (!empty($nom)) {
+            $qb->andWhere('c.nomCadeaux LIKE :nom')
+                ->setParameter('nom', '%' . $nom . '%');
+        }
+
+        if (!empty($type)) {
+            $qb->andWhere('c.typeCadeaux LIKE :type')
+                ->setParameter('type', '%' . $type . '%');
+        }
+
+        if ($quantiteMin !== null && $quantiteMin !== '') {
+            $qb->andWhere('c.quantiteDisponible >= :quantiteMin')
+                ->setParameter('quantiteMin', $quantiteMin);
+        }
+
+        if ($quantiteMax !== null && $quantiteMax !== '') {
+            $qb->andWhere('c.quantiteDisponible <= :quantiteMax')
+                ->setParameter('quantiteMax', $quantiteMax);
+        }
+
+        $cadeaus = $qb->getQuery()->getResult();
+
 
         return $this->render('cadeau/index.html.twig', [
             'cadeaus' => $cadeaus,
         ]);
     }
+
+
+    #[Route('/wheel', name: 'app_cadeau_wheel', methods: ['GET'])]
+    public function wheel(EntityManagerInterface $entityManager): Response
+    {
+        $cadeaus = $entityManager
+            ->getRepository(Cadeau::class)
+            ->findAll();
+
+        $cadeauxArray = [];
+        foreach ($cadeaus as $cadeau) {
+            $cadeauxArray[] = [
+                'id' => $cadeau->getIdCadeaux(),
+                'nomCadeaux' => $cadeau->getNomCadeaux(),
+                'typeCadeaux' => $cadeau->getTypeCadeaux(),
+                'quantiteDisponible' => $cadeau->getQuantiteDisponible(),
+            ];
+        }
+
+        return $this->render('cadeau/wheel.html.twig', [
+            'cadeaus' => $cadeauxArray, // ❗ Pass an array, not entity objects
+        ]);
+    }
+
 
     #[Route('/new', name: 'app_cadeau_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -74,7 +124,7 @@ final class CadeauController extends AbstractController
     #[Route('/{idCadeaux}', name: 'app_cadeau_delete', methods: ['POST'])]
     public function delete(Request $request, Cadeau $cadeau, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$cadeau->getIdCadeaux(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $cadeau->getIdCadeaux(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($cadeau);
             $entityManager->flush();
         }

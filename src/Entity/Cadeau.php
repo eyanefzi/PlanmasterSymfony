@@ -57,17 +57,18 @@ class Cadeau
         return $this;
     }
 
-    public function getquantiteDisponible(): ?int
+    public function getQuantiteDisponible(): ?int
     {
         return $this->quantiteDisponible;
     }
 
-    public function setquantiteDisponible(int $quantiteDisponible): static
+    public function setQuantiteDisponible(int $quantiteDisponible): static
     {
         $this->quantiteDisponible = $quantiteDisponible;
 
         return $this;
     }
+
 
     public function getDescription(): ?string
     {
