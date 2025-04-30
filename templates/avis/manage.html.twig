@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer mes avis{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Mes avis</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Note</th>
+                    <th>Commentaire</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for avis in avis %}
+                <tr>
+                    <td>
+                        {% for i in 1..5 %}
+                            <span class="{{ i <= avis.note ? 'text-warning' : 'text-muted' }}">★</span>
+                        {% endfor %}
+                    </td>
+                    <td>{{ avis.commentaire }}</td>
+                    <td>
+                        <a href="{{ path('app_avis_edit', {'id': avis.id}) }}" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil"></i> Modifier
+                        </a>
+                        <form method="post" action="{{ path('app_avis_delete', {'id': avis.id}) }}" 
+                              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet avis ?');" 
+                              style="display: inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ avis.id) }}">
+                            <button class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i> Supprimer
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3" class="text-center">Vous n'avez pas encore donné d'avis</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{ path('app_home') }}" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> Retour à l'accueil
+    </a>
+</div>
+{% endblock %} 

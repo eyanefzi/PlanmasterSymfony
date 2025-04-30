@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Profil PDF</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 8px 12px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Profil de {{ user.prenom }} {{ user.nom }}</h1>
+
+    <table>
+        <tr>
+            <th>Email</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th>Numéro de téléphone</th>
+            <td>{{ user.numTelephone }}</td>
+        </tr>
+        <tr>
+            <th>Type d'utilisateur</th>
+            <td>{{ user.userType }}</td>
+        </tr>
+    </table>
+</body>
+</html>

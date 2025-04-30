@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel avis{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Donner un avis</h1>
+
+    {{ form_start(form) }}
+        <div class="mb-3">
+            {{ form_label(form.note) }}
+            <div class="star-rating">
+                {{ form_widget(form.note) }}
+            </div>
+        </div>
+
+        <div class="mb-3">
+            {{ form_row(form.commentaire) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <a href="{{ path('app_avis_index') }}" class="btn btn-secondary">Retour</a>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    cursor: pointer;
+    font-size: 2em;
+    color: #ddd;
+    margin: 0 5px;
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+    color: #ffd700;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #ffd700;
+}
+</style>
+{% endblock %}

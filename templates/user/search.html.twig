@@ -1,0 +1,6 @@
+<form method="get" action="{{ path('app_user_search') }}" class="d-flex" style="display: inline;">
+    <input type="text" name="search" class="form-control me-2" placeholder="Rechercher..." value="{{ app.request.get('search') }}">
+    <button class="btn btn-outline-primary" type="submit">
+        <i class="bi bi-search"></i> Rechercher
+    </button>
+</form>

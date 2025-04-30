@@ -1,0 +1,151 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil Participant{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+/* Style pour l'icône de téléphone fixe */
+.floating-phone {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #0d6efd;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.floating-phone:hover {
+    transform: scale(1.1);
+    background-color: #0b5ed7;
+}
+
+/* Style pour les étoiles */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    cursor: pointer;
+    font-size: 2em;
+    color: #ddd;
+}
+
+.star-rating label:before {
+    content: '★';
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+    color: #ffd700;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #ffd700;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<!-- Header avec image de fond -->
+<header class="bg-dark py-5" style="background-image: url('/images/event-bg.jpg'); background-size: cover; background-position: center;">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center my-5">
+                    <h1 class="display-5 fw-bolder text-white mb-2">Bienvenue sur notre plateforme d'événements</h1>
+                    <p class="lead text-white-50 mb-4">Découvrez des événements exceptionnels et participez à des expériences uniques!</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        {% if is_granted('ROLE_OWNER') %}
+                            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#events">Voir les événements</a>
+                        {% endif %}
+                        <a class="btn btn-outline-light btn-lg px-4" href="#avis">Donner un avis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Section Événements -->
+<section class="py-5" id="events">
+    <div class="container px-5">
+        <h2 class="text-center mb-5">Événements à venir</h2>
+        <div class="row gx-5">
+            <!-- Exemple d'événement -->
+            <div class="col-lg-4 mb-5">
+                <div class="card h-100 shadow border-0">
+                    <img class="card-img-top" src="https://via.placeholder.com/600x350" alt="..." />
+                    <div class="card-body p-4">
+                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">Nouveau</div>
+                        <h5 class="card-title mb-3">Titre de l'événement</h5>
+                        <p class="card-text mb-0">Description de l'événement...</p>
+                    </div>
+                    <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                        <div class="d-flex align-items-end justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <div class="small">
+                                    <div class="fw-bold">Date: 25 Mars 2024</div>
+                                    <div class="text-muted">Lieu: Paris</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Répétez pour d'autres événements -->
+        </div>
+    </div>
+</section>
+
+<!-- Section Avis -->
+<section class="py-5 bg-light" id="avis">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6">
+                <div class="text-center">
+                    <h2 class="fw-bolder mb-5">Donnez votre avis</h2>
+                </div>
+                <form method="POST" action="{{ path('app_avis_new') }}">
+                    <div class="mb-4">
+                        <label class="form-label">Note</label>
+                        <div class="star-rating">
+                            {% for i in 5..1 %}
+                                <input type="radio" id="star{{ i }}" name="note" value="{{ i }}" />
+                                <label for="star{{ i }}" title="{{ i }} étoiles"></label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" name="commentaire" placeholder="Votre commentaire" style="height: 10rem"></textarea>
+                        <label>Commentaire</label>
+                    </div>
+                    <div class="d-grid">
+                        <button class="btn btn-primary btn-lg" type="submit">Envoyer mon avis</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Icône de téléphone fixe -->
+<a href="tel:+33123456789" class="floating-phone" title="Nous appeler">
+    <i class="bi bi-telephone-fill"></i>
+</a>
+{% endblock %} 

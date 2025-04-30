@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard Organisateur{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Dashboard Organisateur</h1>
+    
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gestion des Utilisateurs</h5>
+                    <p class="card-text">Gérez les participants et les organisateurs.</p>
+                    <a href="{{ path('app_admin_users') }}" class="btn btn-primary">Voir les utilisateurs</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gestion des Avis</h5>
+                    <p class="card-text">Consultez et gérez les avis des participants.</p>
+                    <a href="{{ path('app_avis_index') }}" class="btn btn-primary">Voir les avis</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Événements</h5>
+                    <p class="card-text">Gérez les événements à venir.</p>
+                    <a href="#" class="btn btn-primary">Gérer les événements</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

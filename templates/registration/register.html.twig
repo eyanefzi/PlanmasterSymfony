@@ -1,0 +1,45 @@
+{% block javascripts %}
+{{ parent() }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const emailInput = document.querySelector('#registration_form_email');
+    const form = document.querySelector('form[name="registration_form"]');
+    
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const email = emailInput.value;
+        
+        // Envoyer le code de vérification
+        await fetch('{{ path('app_register_verify') }}', {
+            method: 'POST',
+            body: new URLSearchParams({email: email}),
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
+
+        // Afficher la boîte de dialogue pour le code
+        const code = prompt('Veuillez entrer le code de vérification reçu par email:');
+        
+        if (code) {
+            const response = await fetch('{{ path('app_register_check_code') }}', {
+                method: 'POST',
+                body: new URLSearchParams({code: code}),
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
+            
+            const result = await response.json();
+            
+            if (result.valid) {
+                form.submit();
+            } else {
+                alert('Code de vérification incorrect');
+            }
+        }
+    });
+});
+</script>
+{% endblock %} 

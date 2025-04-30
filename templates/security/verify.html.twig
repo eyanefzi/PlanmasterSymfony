@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Vérification de l'email</h1>
+
+<p>Un code de vérification a été envoyé à l'adresse : <strong>{{ email }}</strong></p>
+
+<form method="POST">
+    <input type="text" name="verification_code" placeholder="Code de vérification" required>
+    <button type="submit">Vérifier</button>
+</form>
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+
+{% for message in app.flashes('error') %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques des Avis{% endblock %}
+
+{% block body %}
+    <h1>Statistiques des Avis</h1>
+<canvas id="curveChart" width="400" height="200"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('curveChart').getContext('2d');
+
+    const dataPoints = [
+        { x: 0, y: 0 },
+        { x: {{ totalNotesCompletes }}, y: {{ totalNotesReelles }} }
+    ];
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'Total des Notes (Réelles vs Complètes)',
+                data: dataPoints,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.4,
+                fill: false,
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'linear',
+                    position: 'bottom',
+                    title: {
+                        display: true,
+                        text: 'Nombre total des notes complètes attendues (x)'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Nombre total des notes réelles (y)'
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+</script>
+
+{% endblock %}
