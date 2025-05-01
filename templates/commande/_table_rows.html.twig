@@ -1,0 +1,25 @@
+{% for commande in commandes %}
+    <tr>
+        <td>{{ commande.date ? commande.date|date('d/m/Y') : '—' }}</td>
+        <td>
+        <span class="badge bg-{{ commande.status == 'livrée' ? 'success' : 'secondary' }}">
+            {{ commande.status|capitalize }}
+        </span>
+        </td>
+        <td>{{ commande.montantTotal }} €</td>
+        <td>{{ commande.quantite }}</td>
+        <td>{{ commande.isPaid ? '✅ Oui' : '❌ Non' }}</td>
+        <td>
+            <a href="{{ path('app_commande_show', {'id': commande.id}) }}" class="btn btn-sm btn-outline-primary">
+                👁️ Voir
+            </a>
+            <a href="{{ path('app_commande_edit', {'id': commande.id}) }}" class="btn btn-sm btn-outline-secondary">
+                ✏️ Modifier
+            </a>
+        </td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="6" class="text-center text-muted">Aucune commande trouvée.</td>
+    </tr>
+{% endfor %}

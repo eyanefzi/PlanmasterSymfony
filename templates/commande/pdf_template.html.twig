@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Commandes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header img {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <img src="data:image/png;base64,{{ logoBase64 }}" style="width: 150px;">
+
+    <p>Generated on: {{ "now"|date("Y-m-d H:i") }}</p>
+</div>
+
+
+<h1>List of Commandes</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Total Amount</th>
+        <th>Quantity</th>
+        <th>Paid</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for commande in commandes %}
+        <tr>
+            <td>{{ commande.date | date("Y-m-d") }}</td>
+            <td>{{ commande.status }}</td>
+            <td>{{ commande.montantTotal | number_format(2, ',', '.') }} €</td>
+            <td>{{ commande.quantite }}</td>
+            <td>{{ commande.isPaid ? 'Yes' : 'No' }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="5">No commandes found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

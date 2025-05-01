@@ -1,0 +1,66 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Liste des Commandes{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4">📦 Liste des Commandes</h1>
+
+        <!-- Formulaire de recherche AJAX -->
+        <div class="row mb-4 justify-content-center">
+            <div class="col-md-6">
+                <input type="text" id="ajax-search" class="form-control" placeholder="Rechercher une commande...">
+            </div>
+        </div>
+
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-dark">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Montant</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Payée</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody id="commande-results">
+                {% include 'commande/_table_rows.html.twig' with { 'commandes': commandes } %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <a href="{{ path('app_commande_new') }}" class="btn btn-success shadow-sm">
+                ➕ Nouvelle Commande
+            </a>
+            <div>
+                {{ knp_pagination_render(commandes) }}
+            </div>
+            <div class="text-end">
+                <a href="{{ path('app_commande_export_pdf') }}" class="btn btn-danger">Export to PDF</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JQuery AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#ajax-search').keyup(function() {
+                var query = $(this).val();
+                $.ajax({
+                    url: "{{ path('app_commande_search_ajax') }}",
+                    type: 'GET',
+                    data: { search: query },
+                    success: function(data) {
+                        $('#commande-results').html(data);
+                    }
+                });
+            });
+        });
+    </script>
+
+{% endblock %}

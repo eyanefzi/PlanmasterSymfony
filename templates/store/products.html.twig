@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+
+    <div class="container py-4">
+        <h1 class="display-4 text-primary">🛍️ Produits disponibles</h1>
+
+        <!-- Barre de recherche -->
+        <div class="row mb-4 justify-content-center">
+            <div class="col-md-8">
+                <input type="text" id="productSearch" class="form-control" placeholder="Rechercher un produit...">
+            </div>
+        </div>
+
+        <!-- Filtres de prix -->
+        <div class="row mb-4 justify-content-center">
+            <div class="col-md-8">
+                <form method="get" class="form d-flex justify-content-between align-items-center">
+                    <div class="form-group me-3 w-100">
+                        <input type="number" name="min" id="min-price" class="form-control form-control-sm w-50" placeholder="Prix minimum" step="0.01" value="{{ app.request.query.get('min') }}">
+                    </div>
+                    <div class="form-group me-3 w-100">
+                        <input type="number" name="max" id="max-price" class="form-control form-control-sm w-50" placeholder="Prix maximum" step="0.01" value="{{ app.request.query.get('max') }}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-sm w-100">Filtrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Notifications -->
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label == 'success' ? 'success' : 'danger' }} mt-3">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <!-- Liste des produits -->
+        <div id="productList" class="row row-cols-1 row-cols-md-3 g-3">
+            {% for produit in produits %}
+                <div class="col mb-4">
+                    <div class="card shadow-sm rounded border-0">
+                        <img src="{{ asset('uploads/produits/' ~ produit.imageUrl) }}" class="card-img-top" alt="{{ produit.nom }}" style="height: 180px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column p-3">
+                            <h5 class="card-title text-center text-truncate">{{ produit.nom }}</h5>
+                            <p class="card-text text-muted text-truncate mb-2">{{ produit.description }}</p>
+                            <p class="card-text text-center">Prix : DT {{ produit.prix }}</p>
+                            <div class="mt-auto text-center">
+                                <button type="button" class="btn btn-primary btn-sm w-100" onclick="addToCart({{ produit.id }}, {{ produit.prix }}, '{{ produit.nom|e('js') }}')">Ajouter au panier</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Bouton commander -->
+        <div class="mt-3 text-center">
+            <a href="{{ path('app_commande_new') }}" class="btn btn-success">Passer une commande</a>
+        </div>
+    </div>
+
+    <!-- JQuery pour la recherche instantanée -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#productSearch").on("keyup", function() {
+                var searchQuery = $(this).val().toLowerCase();
+                $("#productList .col").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(searchQuery) > -1);
+                });
+            });
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+framework:
+    secret: '%env(APP_SECRET)%'
+    csrf_protection:
+        enabled: true
+    session: true
+    form: ~
+    validation: { enable_annotations: true }
+    translator:
+        default_path: '%kernel.project_dir%/translations'
+        fallbacks:
+            - en
+    http_method_override: true
+    php_errors:
+        log: true

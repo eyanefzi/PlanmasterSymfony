@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Paiement</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+<button id="checkout-button">Payer maintenant</button>
+
+<script>
+const stripe = Stripe('pk_test_xxxxxxxxxxxxxxxxxxxx'); // Remplace avec ta clé publique Stripe
+
+const checkoutButton = document.getElementById('checkout-button');
+checkoutButton.addEventListener('click', () => {
+    fetch('/create-checkout-session', {
+        method: 'POST',
+    })
+    .then(response => response.json())
+    .then(session => {
+        return stripe.redirectToCheckout({ sessionId: session.id });
+    })
+    .then(result => {
+        if (result.error) {
+            alert(result.error.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+</script>
+
+</body>
+</html>

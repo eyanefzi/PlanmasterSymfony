@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block body %}
+    <h1>Détails de la Commande</h1>
+
+    <table class="table">
+        <tbody>
+           
+            <tr>
+                <th>Date</th>
+                <td>{{ commande.date ? commande.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ commande.status }}</td>
+            </tr>
+            <tr>
+                <th>Montant Total</th>
+                <td>{{ commande.montantTotal }}</td>
+            </tr>
+            <tr>
+                <th>Quantité</th>
+                <td>{{ commande.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Payée</th>
+                <td>{{ commande.isPaid ? '✅ Oui' : '❌ Non' }}</td>
+            </tr>
+            <tr>
+                <th>Client</th>
+                <td>{{ commande.client.nom ~ ' ' ~ commande.client.prenom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_commande_index') }}">← Retour à la liste</a> |
+    <a href="{{ path('app_commande_edit', {'id': commande.id}) }}">✏️ Modifier</a>
+
+    <form method="post" action="{{ path('app_commande_delete', {'id': commande.id}) }}"
+          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette commande ?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ commande.id) }}">
+        <button class="btn btn-danger">🗑️ Supprimer</button>
+    </form>
+{% endblock %}

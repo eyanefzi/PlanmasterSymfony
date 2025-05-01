@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reçu de paiement</title>
+</head>
+<body>
+<h1>Merci pour votre achat chez Planmaster !</h1>
+<p>Voici les détails de votre transaction :</p>
+
+<ul>
+    <li>Date : {{ date|date('d/m/Y H:i') }}</li>
+    <li>Montant : {{ amount|format_currency('EUR') }}</li>
+</ul>
+
+<p>Pour toute question, contactez-nous à support@planmaster.com</p>
+</body>
+</html>

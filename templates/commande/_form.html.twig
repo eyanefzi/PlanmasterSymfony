@@ -1,0 +1,43 @@
+{{ form_start(form, {'attr': {'class': 'needs-validation'}, 'novalidate': 'novalidate'}) }}
+
+    <div class="mb-3">
+        {{ form_label(form.date) }}
+        {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.date) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.status) }}
+        {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.status) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.montantTotal) }}
+        {{ form_widget(form.montantTotal, {'attr': {'class': 'form-control', 'step': '0.01'}}) }}
+        {{ form_errors(form.montantTotal) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.quantite) }}
+        {{ form_widget(form.quantite, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.quantite) }}
+    </div>
+
+    <div class="form-check mb-3">
+        {{ form_widget(form.isPaid, {'attr': {'class': 'form-check-input'}}) }}
+        {{ form_label(form.isPaid, null, {'label_attr': {'class': 'form-check-label'}}) }}
+        {{ form_errors(form.isPaid) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.client) }}
+        {{ form_widget(form.client, {'attr': {'class': 'form-select'}}) }}
+        {{ form_errors(form.client) }}
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        {{ button_label|default('💾 Enregistrer') }}
+    </button>
+
+{{ form_end(form) }}

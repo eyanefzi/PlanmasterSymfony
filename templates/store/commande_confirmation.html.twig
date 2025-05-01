@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Passer la Commande{% endblock %}
+
+{% block body %}
+<div class="container py-4">
+    <h1 class="display-4 text-primary text-center">🛒 Passer la Commande</h1>
+    <p class="lead text-center">Vérifiez les produits de votre panier avant de confirmer votre commande.</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Produit</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Prix unitaire</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cartItems %}
+                    <tr>
+                        <td>{{ item.product.nom }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>DT {{ item.price }}</td>
+                        <td>DT {{ item.total }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between">
+            <h4>Total : DT {{ totalAmount }}</h4>
+            <form method="POST" action="{{ path('app_store_confirm_order') }}">
+                <button class="btn btn-success btn-lg" type="submit">Confirmer la commande</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

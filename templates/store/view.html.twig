@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2>Your Cart</h2>
+
+{% if cartItems is empty %}
+    <p>Your cart is empty.</p>
+{% else %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cartItems %}
+                <tr>
+                    <td>{{ item.product.nom }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.price }} €</td>
+                    <td>{{ item.total }} €</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
+<a href="{{ path('app_commande_new') }}" class="btn btn-success">Proceed to Checkout</a>
+{% endblock %}

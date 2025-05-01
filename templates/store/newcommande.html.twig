@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Passer une commande{% endblock %}
+
+{% block body %}
+<div class="container py-4">
+    <h1 class="display-4 text-primary text-center">🛒 Passer une commande</h1>
+    <p class="lead text-center">Vérifiez votre panier avant de finaliser votre commande.</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Produit</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Prix unitaire</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cartItems %}
+                    <tr>
+                        <td>{{ item.product.nom }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>DT {{ item.price }}</td>
+                        <td>DT {{ item.total }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between">
+            <h4>Total : DT {{ totalAmount }}</h4>
+            <button class="btn btn-success btn-lg">Finaliser la commande</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
